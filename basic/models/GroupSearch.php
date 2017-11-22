@@ -8,9 +8,9 @@ use yii\data\ActiveDataProvider;
 use app\models\Groups;
 
 /**
- * GroupsSearch represents the model behind the search form about `app\models\Groups`.
+ * GroupSearch represents the model behind the search form about `app\models\Groups`.
  */
-class GroupsSearch extends Groups
+class GroupSearch extends Groups
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class GroupsSearch extends Groups
     public function rules()
     {
         return [
-            [['GroupNumber', 'StudentId'], 'integer'],
+            [['g_id', 'g_name', 'disciple_id'], 'integer'],
         ];
     }
 
@@ -58,8 +58,9 @@ class GroupsSearch extends Groups
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'GroupNumber' => $this->GroupNumber,
-            'StudentId' => $this->StudentId,
+            'g_id' => $this->g_id,
+            'g_name' => $this->g_name,
+            'disciple_id' => $this->disciple_id,
         ]);
 
         return $dataProvider;

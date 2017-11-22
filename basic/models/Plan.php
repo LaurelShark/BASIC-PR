@@ -7,14 +7,14 @@ use Yii;
 /**
  * This is the model class for table "Plan".
  *
- * @property integer $id
- * @property integer $DiscipleId
- * @property integer $LectionId
- * @property integer $TaskId
+ * @property integer $p_id
+ * @property integer $disciple_id
+ * @property integer $lect_id
+ * @property integer $task_id
  * @property string $Deadline
  *
  * @property Disciple $disciple
- * @property Lections $lection
+ * @property Lections $lect
  * @property Tasks $task
  * @property Results[] $results
  */
@@ -34,12 +34,12 @@ class Plan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['DiscipleId', 'LectionId', 'TaskId', 'Deadline'], 'required'],
-            [['DiscipleId', 'LectionId', 'TaskId'], 'integer'],
+            [['disciple_id', 'lect_id', 'task_id', 'Deadline'], 'required'],
+            [['disciple_id', 'lect_id', 'task_id'], 'integer'],
             [['Deadline'], 'safe'],
-            [['DiscipleId'], 'exist', 'skipOnError' => true, 'targetClass' => Disciple::className(), 'targetAttribute' => ['DiscipleId' => 'id']],
-            [['LectionId'], 'exist', 'skipOnError' => true, 'targetClass' => Lections::className(), 'targetAttribute' => ['LectionId' => 'id']],
-            [['TaskId'], 'exist', 'skipOnError' => true, 'targetClass' => Tasks::className(), 'targetAttribute' => ['TaskId' => 'id']],
+            [['disciple_id'], 'exist', 'skipOnError' => true, 'targetClass' => Disciple::className(), 'targetAttribute' => ['disciple_id' => 'disciple_id']],
+            [['lect_id'], 'exist', 'skipOnError' => true, 'targetClass' => Lections::className(), 'targetAttribute' => ['lect_id' => 'lect_id']],
+            [['task_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tasks::className(), 'targetAttribute' => ['task_id' => 'task_id']],
         ];
     }
 
@@ -49,10 +49,10 @@ class Plan extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'DiscipleId' => 'Disciple ID',
-            'LectionId' => 'Lection ID',
-            'TaskId' => 'Task ID',
+            'p_id' => 'P ID',
+            'disciple_id' => 'Disciple ID',
+            'lect_id' => 'Lect ID',
+            'task_id' => 'Task ID',
             'Deadline' => 'Deadline',
         ];
     }
@@ -62,15 +62,15 @@ class Plan extends \yii\db\ActiveRecord
      */
     public function getDisciple()
     {
-        return $this->hasOne(Disciple::className(), ['id' => 'DiscipleId']);
+        return $this->hasOne(Disciple::className(), ['disciple_id' => 'disciple_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getLection()
+    public function getLect()
     {
-        return $this->hasOne(Lections::className(), ['id' => 'LectionId']);
+        return $this->hasOne(Lections::className(), ['lect_id' => 'lect_id']);
     }
 
     /**
@@ -78,7 +78,7 @@ class Plan extends \yii\db\ActiveRecord
      */
     public function getTask()
     {
-        return $this->hasOne(Tasks::className(), ['id' => 'TaskId']);
+        return $this->hasOne(Tasks::className(), ['task_id' => 'task_id']);
     }
 
     /**
@@ -86,6 +86,6 @@ class Plan extends \yii\db\ActiveRecord
      */
     public function getResults()
     {
-        return $this->hasMany(Results::className(), ['PlanId' => 'id']);
+        return $this->hasMany(Results::className(), ['p_id' => 'p_id']);
     }
 }

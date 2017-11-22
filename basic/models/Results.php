@@ -7,14 +7,14 @@ use Yii;
 /**
  * This is the model class for table "Results".
  *
- * @property integer $id
- * @property integer $PlanId
- * @property integer $StudentId
+ * @property integer $r_id
+ * @property integer $p_id
+ * @property integer $s_id
  * @property integer $NumberOfTries
  * @property integer $Mark
  *
- * @property Plan $plan
- * @property Students $student
+ * @property Plan $p
+ * @property Student $s
  */
 class Results extends \yii\db\ActiveRecord
 {
@@ -32,10 +32,10 @@ class Results extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['PlanId', 'StudentId', 'NumberOfTries', 'Mark'], 'required'],
-            [['PlanId', 'StudentId', 'NumberOfTries', 'Mark'], 'integer'],
-            [['PlanId'], 'exist', 'skipOnError' => true, 'targetClass' => Plan::className(), 'targetAttribute' => ['PlanId' => 'id']],
-            [['StudentId'], 'exist', 'skipOnError' => true, 'targetClass' => Students::className(), 'targetAttribute' => ['StudentId' => 'id']],
+            [['p_id', 's_id', 'NumberOfTries', 'Mark'], 'required'],
+            [['p_id', 's_id', 'NumberOfTries', 'Mark'], 'integer'],
+            [['p_id'], 'exist', 'skipOnError' => true, 'targetClass' => Plan::className(), 'targetAttribute' => ['p_id' => 'p_id']],
+            [['s_id'], 'exist', 'skipOnError' => true, 'targetClass' => Student::className(), 'targetAttribute' => ['s_id' => 's_id']],
         ];
     }
 
@@ -45,9 +45,9 @@ class Results extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'PlanId' => 'Plan ID',
-            'StudentId' => 'Student ID',
+            'r_id' => 'R ID',
+            'p_id' => 'P ID',
+            's_id' => 'S ID',
             'NumberOfTries' => 'Number Of Tries',
             'Mark' => 'Mark',
         ];
@@ -56,16 +56,16 @@ class Results extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getPlan()
+    public function getP()
     {
-        return $this->hasOne(Plan::className(), ['id' => 'PlanId']);
+        return $this->hasOne(Plan::className(), ['p_id' => 'p_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getStudent()
+    public function getS()
     {
-        return $this->hasOne(Students::className(), ['id' => 'StudentId']);
+        return $this->hasOne(Student::className(), ['s_id' => 's_id']);
     }
 }

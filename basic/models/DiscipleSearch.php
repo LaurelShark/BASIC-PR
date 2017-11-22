@@ -18,8 +18,8 @@ class DiscipleSearch extends Disciple
     public function rules()
     {
         return [
-            [['id', 'GroupId', 'TeacherId'], 'integer'],
-            [['Name'], 'safe'],
+            [['disciple_id', 't_id'], 'integer'],
+            [['d_name'], 'safe'],
         ];
     }
 
@@ -59,12 +59,11 @@ class DiscipleSearch extends Disciple
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'GroupId' => $this->GroupId,
-            'TeacherId' => $this->TeacherId,
+            'disciple_id' => $this->disciple_id,
+            't_id' => $this->t_id,
         ]);
 
-        $query->andFilterWhere(['like', 'Name', $this->Name]);
+        $query->andFilterWhere(['like', 'd_name', $this->d_name]);
 
         return $dataProvider;
     }

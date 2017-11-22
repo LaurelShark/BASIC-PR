@@ -15,23 +15,23 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 's_id') ?>
 
-    <?= $form->field($model, 'FirstName') ?>
+    <?= $form->field($model, 's_surname') ?>
 
-    <?= $form->field($model, 'FathName') ?>
+    <?= $form->field($model, 's_name') ?>
 
-    <?= $form->field($model, 'Surname') ?>
+    <?= $form->field($model, 's_fathname') ?>
 
-    <?= $form->field($model, 'E-mail') ?>
+    <?= $form->field($model, 's_datebirth') ?>
 
-    <?php // echo $form->field($model, 'BirthDate') ?>
+    <?php // echo $form->field($model, 's_course') ?>
 
-    <?php // echo $form->field($model, 'Course') ?>
+    <?php // echo $form->field($model, 's_email') ?>
 
-    <?php // echo $form->field($model, 'UserName') ?>
+    <?php // echo $form->field($model, 's_password') ?>
 
-    <?php // echo $form->field($model, 'Password') ?>
+    <?php // echo $form->field($model, 'speciality_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

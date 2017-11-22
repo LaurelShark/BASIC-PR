@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "Tasks".
  *
- * @property integer $id
+ * @property integer $task_id
  * @property string $Name
  * @property string $Task
  * @property string $Answer
@@ -42,7 +42,7 @@ class Tasks extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'task_id' => 'Task ID',
             'Name' => 'Name',
             'Task' => 'Task',
             'Answer' => 'Answer',
@@ -54,6 +54,6 @@ class Tasks extends \yii\db\ActiveRecord
      */
     public function getPlans()
     {
-        return $this->hasMany(Plan::className(), ['TaskId' => 'id']);
+        return $this->hasMany(Plan::className(), ['task_id' => 'task_id']);
     }
 }

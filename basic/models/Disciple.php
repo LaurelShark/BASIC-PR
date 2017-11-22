@@ -7,13 +7,12 @@ use Yii;
 /**
  * This is the model class for table "Disciple".
  *
- * @property integer $id
- * @property string $Name
- * @property integer $GroupId
- * @property integer $TeacherId
+ * @property integer $disciple_id
+ * @property string $d_name
+ * @property integer $t_id
  *
- * @property Groups $group
- * @property Teacher $teacher
+ * @property Teacher $t
+ * @property Groups[] $groups
  * @property Plan[] $plans
  */
 class Disciple extends \yii\db\ActiveRecord
@@ -32,11 +31,10 @@ class Disciple extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Name', 'GroupId', 'TeacherId'], 'required'],
-            [['GroupId', 'TeacherId'], 'integer'],
-            [['Name'], 'string', 'max' => 30],
-            [['GroupId'], 'exist', 'skipOnError' => true, 'targetClass' => Groups::className(), 'targetAttribute' => ['GroupId' => 'GroupNumber']],
-            [['TeacherId'], 'exist', 'skipOnError' => true, 'targetClass' => Teacher::className(), 'targetAttribute' => ['TeacherId' => 'id']],
+            [['d_name', 't_id'], 'required'],
+            [['t_id'], 'integer'],
+            [['d_name'], 'string', 'max' => 30],
+            [['t_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teacher::className(), 'targetAttribute' => ['t_id' => 't_id']],
         ];
     }
 
@@ -46,27 +44,26 @@ class Disciple extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'Name' => 'Name',
-            'GroupId' => 'Group ID',
-            'TeacherId' => 'Teacher ID',
+            'disciple_id' => 'Disciple ID',
+            'd_name' => 'D Name',
+            't_id' => 'T ID',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getGroup()
+    public function getT()
     {
-        return $this->hasOne(Groups::className(), ['GroupNumber' => 'GroupId']);
+        return $this->hasOne(Teacher::className(), ['t_id' => 't_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTeacher()
+    public function getGroups()
     {
-        return $this->hasOne(Teacher::className(), ['id' => 'TeacherId']);
+        return $this->hasMany(Groups::className(), ['disciple_id' => 'disciple_id']);
     }
 
     /**
@@ -74,6 +71,6 @@ class Disciple extends \yii\db\ActiveRecord
      */
     public function getPlans()
     {
-        return $this->hasMany(Plan::className(), ['DiscipleId' => 'id']);
+        return $this->hasMany(Plan::className(), ['disciple_id' => 'disciple_id']);
     }
 }

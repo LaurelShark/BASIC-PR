@@ -18,8 +18,8 @@ class AdminSearch extends Admin
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['FirstName', 'FathName', 'Surname', 'DateBirth', 'Position', 'UserName', 'Password'], 'safe'],
+            [['a_id'], 'integer'],
+            [['a_surname', 'a_name', 'a_fathname', 'a_datebirth', 'a_position', 'a_email', 'a_password'], 'safe'],
         ];
     }
 
@@ -59,16 +59,16 @@ class AdminSearch extends Admin
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'DateBirth' => $this->DateBirth,
+            'a_id' => $this->a_id,
+            'a_datebirth' => $this->a_datebirth,
         ]);
 
-        $query->andFilterWhere(['like', 'FirstName', $this->FirstName])
-            ->andFilterWhere(['like', 'FathName', $this->FathName])
-            ->andFilterWhere(['like', 'Surname', $this->Surname])
-            ->andFilterWhere(['like', 'Position', $this->Position])
-            ->andFilterWhere(['like', 'UserName', $this->UserName])
-            ->andFilterWhere(['like', 'Password', $this->Password]);
+        $query->andFilterWhere(['like', 'a_surname', $this->a_surname])
+            ->andFilterWhere(['like', 'a_name', $this->a_name])
+            ->andFilterWhere(['like', 'a_fathname', $this->a_fathname])
+            ->andFilterWhere(['like', 'a_position', $this->a_position])
+            ->andFilterWhere(['like', 'a_email', $this->a_email])
+            ->andFilterWhere(['like', 'a_password', $this->a_password]);
 
         return $dataProvider;
     }

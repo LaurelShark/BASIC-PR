@@ -5,15 +5,17 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "Metodists".
+ * This is the model class for table "Metodist".
  *
- * @property integer $id
- * @property string $FirstName
- * @property string $FathName
- * @property string $Surname
- * @property string $E-mail
- * @property string $UserName
- * @property string $Password
+ * @property integer $m_id
+ * @property string $m_surname
+ * @property string $m_name
+ * @property string $m_fathname
+ * @property string $m_email
+ * @property string $m_password
+ * @property integer $d_id
+ *
+ * @property Department $d
  */
 class Metodist extends \yii\db\ActiveRecord
 {
@@ -22,7 +24,7 @@ class Metodist extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'Metodists';
+        return 'Metodist';
     }
 
     /**
@@ -31,8 +33,11 @@ class Metodist extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['FirstName', 'FathName', 'Surname', 'E-mail', 'UserName', 'Password'], 'required'],
-            [['FirstName', 'FathName', 'Surname', 'E-mail', 'UserName', 'Password'], 'string', 'max' => 100],
+            [['m_surname', 'm_name', 'm_fathname', 'm_email', 'm_password', 'd_id'], 'required'],
+            [['d_id'], 'integer'],
+            [['m_surname', 'm_name', 'm_fathname'], 'string', 'max' => 30],
+            [['m_email', 'm_password'], 'string', 'max' => 255],
+            [['d_id'], 'exist', 'skipOnError' => true, 'targetClass' => Department::className(), 'targetAttribute' => ['d_id' => 'd_id']],
         ];
     }
 
@@ -42,13 +47,21 @@ class Metodist extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'FirstName' => 'First Name',
-            'FathName' => 'Fath Name',
-            'Surname' => 'Surname',
-            'E-mail' => 'E Mail',
-            'UserName' => 'User Name',
-            'Password' => 'Password',
+            'm_id' => 'M ID',
+            'm_surname' => 'M Surname',
+            'm_name' => 'M Name',
+            'm_fathname' => 'M Fathname',
+            'm_email' => 'M Email',
+            'm_password' => 'M Password',
+            'd_id' => 'D ID',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getD()
+    {
+        return $this->hasOne(Department::className(), ['d_id' => 'd_id']);
     }
 }

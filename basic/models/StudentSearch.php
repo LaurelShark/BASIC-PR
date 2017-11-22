@@ -18,8 +18,8 @@ class StudentSearch extends Student
     public function rules()
     {
         return [
-            [['id', 'Course'], 'integer'],
-            [['FirstName', 'FathName', 'Surname', 'E-mail', 'BirthDate', 'UserName', 'Password'], 'safe'],
+            [['s_id', 's_course', 'speciality_id'], 'integer'],
+            [['s_surname', 's_name', 's_fathname', 's_datebirth', 's_email', 's_password'], 'safe'],
         ];
     }
 
@@ -59,17 +59,17 @@ class StudentSearch extends Student
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'BirthDate' => $this->BirthDate,
-            'Course' => $this->Course,
+            's_id' => $this->s_id,
+            's_datebirth' => $this->s_datebirth,
+            's_course' => $this->s_course,
+            'speciality_id' => $this->speciality_id,
         ]);
 
-        $query->andFilterWhere(['like', 'FirstName', $this->FirstName])
-            ->andFilterWhere(['like', 'FathName', $this->FathName])
-            ->andFilterWhere(['like', 'Surname', $this->Surname])
-            ->andFilterWhere(['like', 'E-mail', $this->E-mail])
-            ->andFilterWhere(['like', 'UserName', $this->UserName])
-            ->andFilterWhere(['like', 'Password', $this->Password]);
+        $query->andFilterWhere(['like', 's_surname', $this->s_surname])
+            ->andFilterWhere(['like', 's_name', $this->s_name])
+            ->andFilterWhere(['like', 's_fathname', $this->s_fathname])
+            ->andFilterWhere(['like', 's_email', $this->s_email])
+            ->andFilterWhere(['like', 's_password', $this->s_password]);
 
         return $dataProvider;
     }

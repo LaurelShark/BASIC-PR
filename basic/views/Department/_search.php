@@ -4,20 +4,22 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\GroupsSearch */
+/* @var $model app\models\DepartmentSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="groups-search">
+<div class="department-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'GroupNumber') ?>
+    <?= $form->field($model, 'd_id') ?>
 
-    <?= $form->field($model, 'StudentId') ?>
+    <?= $form->field($model, 'd_name') ?>
+
+    <?= $form->field($model, 'f_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

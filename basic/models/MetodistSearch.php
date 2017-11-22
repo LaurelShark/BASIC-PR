@@ -18,8 +18,8 @@ class MetodistSearch extends Metodist
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['FirstName', 'FathName', 'Surname', 'E-mail', 'UserName', 'Password'], 'safe'],
+            [['m_id', 'd_id'], 'integer'],
+            [['m_surname', 'm_name', 'm_fathname', 'm_email', 'm_password'], 'safe'],
         ];
     }
 
@@ -59,15 +59,15 @@ class MetodistSearch extends Metodist
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            'm_id' => $this->m_id,
+            'd_id' => $this->d_id,
         ]);
 
-        $query->andFilterWhere(['like', 'FirstName', $this->FirstName])
-            ->andFilterWhere(['like', 'FathName', $this->FathName])
-            ->andFilterWhere(['like', 'Surname', $this->Surname])
-            ->andFilterWhere(['like', 'E-mail', $this->E-mail])
-            ->andFilterWhere(['like', 'UserName', $this->UserName])
-            ->andFilterWhere(['like', 'Password', $this->Password]);
+        $query->andFilterWhere(['like', 'm_surname', $this->m_surname])
+            ->andFilterWhere(['like', 'm_name', $this->m_name])
+            ->andFilterWhere(['like', 'm_fathname', $this->m_fathname])
+            ->andFilterWhere(['like', 'm_email', $this->m_email])
+            ->andFilterWhere(['like', 'm_password', $this->m_password]);
 
         return $dataProvider;
     }

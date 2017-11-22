@@ -12,11 +12,11 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'DiscipleId')->textInput() ?>
+    <?= $form->field($model, 'disciple_id')->textInput() ?>
 
-    <?= $form->field($model, 'LectionId')->textInput() ?>
+    <?= $form->field($model, 'lect_id')->textInput() ?>
 
-    <?= $form->field($model, 'TaskId')->textInput() ?>
+    <?= $form->field($model, 'task_id')->textInput() ?>
 
     <?= $form->field($model, 'Deadline')->textInput() ?>
 

@@ -18,7 +18,7 @@ class PlanSearch extends Plan
     public function rules()
     {
         return [
-            [['id', 'DiscipleId', 'LectionId', 'TaskId'], 'integer'],
+            [['p_id', 'disciple_id', 'lect_id', 'task_id'], 'integer'],
             [['Deadline'], 'safe'],
         ];
     }
@@ -59,10 +59,10 @@ class PlanSearch extends Plan
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'DiscipleId' => $this->DiscipleId,
-            'LectionId' => $this->LectionId,
-            'TaskId' => $this->TaskId,
+            'p_id' => $this->p_id,
+            'disciple_id' => $this->disciple_id,
+            'lect_id' => $this->lect_id,
+            'task_id' => $this->task_id,
             'Deadline' => $this->Deadline,
         ]);
 

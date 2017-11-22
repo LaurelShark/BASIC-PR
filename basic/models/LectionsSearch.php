@@ -18,7 +18,7 @@ class LectionsSearch extends Lections
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['lect_id'], 'integer'],
             [['Lection'], 'safe'],
         ];
     }
@@ -59,7 +59,7 @@ class LectionsSearch extends Lections
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            'lect_id' => $this->lect_id,
         ]);
 
         $query->andFilterWhere(['like', 'Lection', $this->Lection]);

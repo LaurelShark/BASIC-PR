@@ -18,7 +18,7 @@ class ResultsSearch extends Results
     public function rules()
     {
         return [
-            [['id', 'PlanId', 'StudentId', 'NumberOfTries', 'Mark'], 'integer'],
+            [['r_id', 'p_id', 's_id', 'NumberOfTries', 'Mark'], 'integer'],
         ];
     }
 
@@ -58,9 +58,9 @@ class ResultsSearch extends Results
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'PlanId' => $this->PlanId,
-            'StudentId' => $this->StudentId,
+            'r_id' => $this->r_id,
+            'p_id' => $this->p_id,
+            's_id' => $this->s_id,
             'NumberOfTries' => $this->NumberOfTries,
             'Mark' => $this->Mark,
         ]);

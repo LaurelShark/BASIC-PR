@@ -7,14 +7,14 @@ use Yii;
 /**
  * This is the model class for table "Admin".
  *
- * @property integer $id
- * @property string $FirstName
- * @property string $FathName
- * @property string $Surname
- * @property string $DateBirth
- * @property string $Position
- * @property string $UserName
- * @property string $Password
+ * @property integer $a_id
+ * @property string $a_surname
+ * @property string $a_name
+ * @property string $a_fathname
+ * @property string $a_datebirth
+ * @property string $a_position
+ * @property string $a_email
+ * @property string $a_password
  */
 class Admin extends \yii\db\ActiveRecord
 {
@@ -32,9 +32,9 @@ class Admin extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['FirstName', 'FathName', 'Surname', 'DateBirth', 'Position', 'UserName', 'Password'], 'required'],
-            [['DateBirth'], 'safe'],
-            [['FirstName', 'FathName', 'Surname', 'Position', 'UserName', 'Password'], 'string', 'max' => 100],
+            [['a_surname', 'a_name', 'a_fathname', 'a_datebirth', 'a_position', 'a_email', 'a_password'], 'required'],
+            [['a_datebirth'], 'safe'],
+            [['a_surname', 'a_name', 'a_fathname', 'a_position', 'a_email', 'a_password'], 'string', 'max' => 100],
         ];
     }
 
@@ -44,14 +44,14 @@ class Admin extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'FirstName' => 'First Name',
-            'FathName' => 'Fath Name',
-            'Surname' => 'Surname',
-            'DateBirth' => 'Date Birth',
-            'Position' => 'Position',
-            'UserName' => 'User Name',
-            'Password' => 'Password',
+            'a_id' => 'A ID',
+            'a_surname' => 'A Surname',
+            'a_name' => 'A Name',
+            'a_fathname' => 'A Fathname',
+            'a_datebirth' => 'A Datebirth',
+            'a_position' => 'A Position',
+            'a_email' => 'A Email',
+            'a_password' => 'A Password',
         ];
     }
 }

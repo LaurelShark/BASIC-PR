@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "Lections".
  *
- * @property integer $id
+ * @property integer $lect_id
  * @property string $Lection
  *
  * @property Plan[] $plans
@@ -39,7 +39,7 @@ class Lections extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'lect_id' => 'Lect ID',
             'Lection' => 'Lection',
         ];
     }
@@ -49,6 +49,6 @@ class Lections extends \yii\db\ActiveRecord
      */
     public function getPlans()
     {
-        return $this->hasMany(Plan::className(), ['LectionId' => 'id']);
+        return $this->hasMany(Plan::className(), ['lect_id' => 'lect_id']);
     }
 }
