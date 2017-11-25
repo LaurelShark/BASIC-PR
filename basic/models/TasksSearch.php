@@ -62,6 +62,18 @@ class TasksSearch extends Tasks
             'task_id' => $this->task_id,
         ]);
 
+        $user = $_SESSION['user'];
+        if($user) {
+            $query->
+            innerJoin('Plan', 'Tasks.task_id = Plan.task_id')->
+            leftJoin('Results', 'Plan.p_id = Results.p_id')->
+            //    innerJoin('Disciple', 'Disciple.disciple_id = Plan.disciple_id')->
+            innerJoin('Groups', 'Groups.disciple_id = Plan.disciple_id')->
+            innerJoin('Group_Student', 'Groups.g_id = Group_Student.g_id')->
+            innerJoin('Student', 'Group_Student.s_id = Student.s_id')->
+            andWhere(['Student.s_id' => $user['s_id'] ]);
+        }
+
         $query->andFilterWhere(['like', 'Name', $this->Name]);
 
         return $dataProvider;
