@@ -19,32 +19,6 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Ukraine, Kyiv</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">My Dashboard</a></li>
-            <li><a href="pages.html">Metodists</a></li> <!-- тут сторінки, не універ-->
-            <li><a href="posts.html">Teachers</a></li>
-            <li><a href="users.html">Students</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welcome, <?= $user->getName() ?> </a></li>
-            <li><a href="login.html">Logout</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
     <header id="header">
       <div class="container">
         <div class="row">
@@ -59,9 +33,9 @@
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a type="button" data-toggle="modal" data-target="#addPage">Metodist</a></li>
-                <li><a type="button" data-toggle="modal" data-target="#addPage">Student</a></li>
-                <li><a type="button" data-toggle="modal" data-target="#addPage">Teacher</a></li>
+                <li><a href="<?= \yii\helpers\Url::to(['metodist/index']) ?>" type="button" data-toggle="modal">Metodist</a></li>
+                <li><a href="<?= \yii\helpers\Url::to(['student/index']) ?>" type="button" data-toggle="modal">Student</a></li>
+                <li><a href="<?= \yii\helpers\Url::to(['teacher/index']) ?>" type="button" data-toggle="modal">Teacher</a></li>
               </ul>
             </div>
           </div>
@@ -90,19 +64,19 @@
               <div class="panel-body">
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 203</h2>
+                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?= \app\models\Metodist::find()->count() ?></h2>
                     <h4>Metodists</h4>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 12</h2>
+                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?= \app\models\Teacher::find()->count() ?></h2>
                     <h4>Teachers</h4>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 33</h2>
+                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?= \app\models\Student::find()->count() ?></h2>
                     <h4>Students</h4>
                   </div>
                 </div>
