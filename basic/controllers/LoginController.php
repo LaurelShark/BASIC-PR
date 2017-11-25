@@ -48,6 +48,8 @@ class LoginController extends Controller
             }
         }
 
+        $_SESSION['user'] = null;
+
         return $this->render('index');
     }
 
