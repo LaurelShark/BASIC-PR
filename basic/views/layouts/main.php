@@ -22,6 +22,12 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -120,13 +126,19 @@ AppAsset::register($this);
                 ]
             ];
         }
+
+
+        function renderItem($item) {
+            $isActive = $_GET['r'] == $item['controller'];
+            $activeClass = $isActive ? 'class="active"' : '';
+            $url = \yii\helpers\Url::to([$item['controller']]);
+            $content = $item['content'];
+            return "<li $activeClass><a href='$url'>$content</a></li>";
+        }
     ?>
 
     <link href="css/<?= $cssFile ?>" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+
 
     <nav class="navbar navbar-default">
         <div class="container">
@@ -140,19 +152,19 @@ AppAsset::register($this);
                 <a class="navbar-brand" href="#">Ukraine, Kyiv</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
 
-                    <? foreach($links as $link): ?>
-                        <li
-                            <? if($_GET['r'] == $link['controller']): ?>
-                                class="active"
-                            <? endif ?>
-                            >
-                                <a href="<?= \yii\helpers\Url::to([$link['controller']]) ?>">
-                                    <?= $link['content'] ?>
-                                </a>
-                        </li>
-                    <? endforeach ?>
+                <ul class="nav navbar-nav">
+                    <?= renderItem($links[0]) ?>
+                    <div class="dropdown" style="display: inline-block; margin-left: 20px;">
+                        <button id="crud-dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Panels
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <? foreach(array_slice($links, 1) as $link): ?>
+                                <?= renderItem($link) ?>
+                            <? endforeach ?>
+                        </ul>
+                    </div>
+
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -162,6 +174,19 @@ AppAsset::register($this);
             </div><!--/.nav-collapse -->
         </div>
     </nav>
+
+    <style>
+        #crud-dropdown {
+            border: 0;
+            background: transparent;
+        }
+        .dropdown-menu li.active > a {
+            opacity: 0.5;
+        }
+        .dropdown-menu {
+            border-radius: 0;
+        }
+    </style>
 
 <? endif ?>
 
