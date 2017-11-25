@@ -30,8 +30,7 @@ class Tasks extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Name', 'Task', 'Answer'], 'required'],
-            [['Task'], 'string'],
+            [['Name'], 'required']
         ];
     }
 

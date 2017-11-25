@@ -19,7 +19,7 @@ class TasksSearch extends Tasks
     {
         return [
             [['task_id'], 'integer'],
-            [['Name', 'Task', 'Answer'], 'safe'],
+            [['Name'], 'safe'],
         ];
     }
 
@@ -62,9 +62,7 @@ class TasksSearch extends Tasks
             'task_id' => $this->task_id,
         ]);
 
-        $query->andFilterWhere(['like', 'Name', $this->Name])
-            ->andFilterWhere(['like', 'Task', $this->Task])
-            ->andFilterWhere(['like', 'Answer', $this->Answer]);
+        $query->andFilterWhere(['like', 'Name', $this->Name]);
 
         return $dataProvider;
     }
