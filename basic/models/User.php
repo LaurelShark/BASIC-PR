@@ -25,4 +25,16 @@ class User extends \yii\db\ActiveRecord
     static function isAdmin() {
         return is_a($_SESSION['user'], Admin::className());
     }
+
+    static function isMetodist() {
+        return is_a($_SESSION['user'], Metodist::className());
+    }
+
+    static function isTeacher() {
+        return is_a($_SESSION['user'], Teacher::className());
+    }
+
+    static function isStudent() {
+        return is_a($_SESSION['user'], Student::className());
+    }
 }

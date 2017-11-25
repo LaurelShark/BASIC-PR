@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </p>
     <? endif ?>
     <?php
-        if(\app\models\User::isAdmin()) {
+        if(!\app\models\User::isStudent()) {
             $columns = [
                 ['class' => 'yii\grid\SerialColumn'],
 
