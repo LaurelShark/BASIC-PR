@@ -31,8 +31,7 @@ class Tasks extends \yii\db\ActiveRecord
     {
         return [
             [['Name', 'Task', 'Answer'], 'required'],
-            [['Task', 'Answer'], 'string'],
-            [['Name'], 'string', 'max' => 255],
+            [['Task'], 'string'],
         ];
     }
 
@@ -43,9 +42,7 @@ class Tasks extends \yii\db\ActiveRecord
     {
         return [
             'task_id' => 'Task ID',
-            'Name' => 'Name',
-            'Task' => 'Task',
-            'Answer' => 'Answer',
+            'Name' => 'Name'
         ];
     }
 
