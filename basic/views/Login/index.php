@@ -11,45 +11,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>STEMUKR Area | Account Login</title>
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
+    <title>Stemukr01</title>
+    <meta name="description" content="CSS Grid Real Example">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <style>body { opacity: 1; overflow-x: hidden; } html { background-color: #fff; }</style>
+
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">AdminStrap</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
-
-<header id="header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center"> STEMUKR Area <br><small>Account Login</small></h1>
+<header class="main-header grid" style="background-image: url(img/Phy.jpg);">
+        
+        <div class="header-content grid">
+            <h1>Welcome to super stemukr01</h1>
+            <div class="header-buttons">
+                <a href="#login!" class="button">Log in!</a>
+                <a href="#" class="button button-gray">Read more</a>
             </div>
         </div>
-    </div>
-</header>
+         <script src="js/scripts.min.js"></script>
+    </header>
+
+<section class="formsection">
+        <div class="container">
+            <a name="login!"></a>
+            <form class="grid" action="<?= \Yii::$app->request->url ?>" class="well" method="POST">
+                <div><input type="text" name="email" placeholder="Your login" required></div>
+                <div><input type="text" name="password" placeholder="Your password"></div>
+                <div><input type="text" name="name" placeholder="Special code(for admins)"></div>
+                <div><button class="button">Log In</button></div>
+                <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+            </form>
+
+        </div>
+    </section> 
 
 <? if(isset($failure) && $failure): ?>
     <script>
@@ -59,34 +58,123 @@
     </script>
 <? endif; ?>
 
-<section id="main">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <form id="login" action="<?= \Yii::$app->request->url ?>" class="well" method="POST">
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input name="email" type="text" class="form-control" placeholder="Enter Email">
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input name="password" type="password" class="form-control" placeholder="Password">
-                    </div>
-                    <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
-                    <button type="submit" class="btn btn-default btn-block">Login</button>
-                </form>
-            </div>
+
+
+<section class="portfolio-section grid">
+        <div class="portfolio-item grid" style="background-image: url(img/1.jpg)"><span>My Dis</span></div>
+        <div class="portfolio-item grid" style="background-image: url(img/2.jpg)"><span>Cool MacBook</span></div>
+        <div class="portfolio-item grid" style="background-image: url(img/3.jpg)"><span>Cool iMac</span></div>
+        <div class="portfolio-item grid" style="background-image: url(img/4.jpg)"><span>Cool Hacking</span></div>
+        <div class="portfolio-item grid" style="background-image: url(img/5.jpg)"><span>Cool Bull Shit</span></div>
+        <div class="portfolio-item grid" style="background-image: url(img/6.jpg)"><span>Cool WorkSpace</span></div>
+        <div class="portfolio-item grid" style="background-image: url(img/7.jpg)"><span>Cool Notebook</span></div>
+        <div class="portfolio-item grid" style="background-image: url(img/8.jpg)"><span>Cool Code</span></div>
+        <div class="portfolio-item grid" style="background-image: url(img/9.jpg)"><span>Cool Timer</span></div>
+        <div class="buttoncase text-center">
+            <a href="#" class="button">View Portfolio</a>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer id="footer">
-    <p>Copyright STEMUKR, &copy; 2017</p>
-</footer>
+    <section class="section-ready landing-section">
+        <div class="container grid">
+            
+            <div class="ready-left">
+                
+                <h2>The Coolest system!<br>Fantastic four: Yarik, Alosha, Sofi, Annet</h2>
 
-<script>
-    CKEDITOR.replace( 'editor1' );
-</script>
+                <p>А сюди щось цікаве!)</p>
+                <p>Ullam eos illum, voluptate necessitatibus laudantium, enim rem sed magni facilis vel praesentium minus? Magnam excepturi distinctio atque sint nam facilis recusandae assumenda quibusdam a. Deleniti, obcaecati dolorum tenetur sunt.</p>
+
+            </div>
+
+            <div class="ready-right">
+                
+                <img src="img/example.jpg" alt="Example" class="img-responsive">
+
+            </div>
+
+        </div>
+    </section>
+
+    
+
+    <section class="landing-section section-blog">
+        <div class="container">
+            
+            <h2>Events</h2>
+<!-- ТУТ може бути що-завгодно, (Student events in your city: Kyiv), СОФІЯ - твоє завдання придумати що саме-->
+
+            <div class="blog-home grid">
+                
+                <a href="#" class="blog-item grid">
+                    <span class="blog-item-img" style="background-image: url(img/rottenapples.jpg);"></span>
+                    <span class="blog-item-content grid">
+                        <h4>Permanent Installation</h4>
+                        <p>Rotten Apples: Botanical Models of Diversity and Disease</p>
+                    </span>
+                </a>
+
+                <a href="#" class="blog-item grid">
+                    <span class="blog-item-img" style="background-image: url(img/2.jpg);"></span>
+                    <span class="blog-item-content grid">
+                        <h4>We Are Champions At Last Month</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo rem perferendis provident dolor nesciunt minima consectetur ipsum, architecto...</p>
+                    </span>
+                </a>
+
+                <a href="#" class="blog-item grid">
+                    <span class="blog-item-img" style="background-image: url(img/3.jpg);"></span>
+                    <span class="blog-item-content grid">
+                        <h4>We Are Champions At Last Month</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo rem perferendis provident dolor nesciunt minima consectetur ipsum, architecto...</p>
+                    </span>
+                </a>
+
+                <a href="#" class="blog-item grid">
+                    <span class="blog-item-img" style="background-image: url(img/4.jpg);"></span>
+                    <span class="blog-item-content grid">
+                        <h4>We Are Champions At Last Month</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo rem perferendis provident dolor nesciunt minima consectetur ipsum, architecto...</p>
+                    </span>
+                </a>
+
+                <a href="#" class="blog-item grid">
+                    <span class="blog-item-img" style="background-image: url(img/5.jpg);"></span>
+                    <span class="blog-item-content grid">
+                        <h4>We Are Champions At Last Month</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo rem perferendis provident dolor nesciunt minima consectetur ipsum, architecto...</p>
+                    </span>
+                </a>
+
+                <a href="#" class="blog-item grid">
+                    <span class="blog-item-img" style="background-image: url(img/6.jpg);"></span>
+                    <span class="blog-item-content grid">
+                        <h4>We Are Champions At Last Month</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo rem perferendis provident dolor nesciunt minima consectetur ipsum, architecto...</p>
+                    </span>
+                </a>
+
+                <div class="buttoncase text-center">
+                    <a href="#" class="button">View Blog</a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-logo">
+                We Are Real <span>Creators</span>
+            </div>
+            <div class="footer-copy">~©~</div>
+        </div>
+    </footer>
+    
+    <link rel="stylesheet" href="css/main.min.css">
+   
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

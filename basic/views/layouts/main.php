@@ -54,7 +54,24 @@ AppAsset::register($this);
                 [
                     'content' => 'Students',
                     'controller' => 'student/index'
+                ],
+                [
+                    'content' => 'Results',
+                    'controller' => 'results/index'
+                ],
+                [
+                    'content' => 'Department',
+                    'controller' => 'department/index'
+                ], 
+                [
+                    'content' => 'Faculty',
+                    'controller' => 'faculty/index'
+                ],
+                [
+                    'content' => 'University',
+                    'controller' => 'university/index'
                 ]
+
             ];
         } else if($isMetodist) {
             $cssFile = "m_style.css";
