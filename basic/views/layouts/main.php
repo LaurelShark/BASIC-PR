@@ -98,6 +98,26 @@ AppAsset::register($this);
                 [
                     'content' => 'Students',
                     'controller' => 'student/index'
+                ],
+                [
+                    'content' => 'Groups',
+                    'controller' => 'group/index'
+                ],
+                [
+                    'content' => 'Groups of Students',
+                    'controller' => 'studentsgroup/index'
+                ],
+                [
+                    'content' => 'Department',
+                    'controller' => 'department/index'
+                ], 
+                [
+                    'content' => 'Faculty',
+                    'controller' => 'faculty/index'
+                ],
+                [
+                    'content' => 'University',
+                    'controller' => 'university/index'
                 ]
             ];
         } else if($isTeacher) {
@@ -119,6 +139,42 @@ AppAsset::register($this);
                 [
                     'content' => 'Students',
                     'controller' => 'student/index'
+                ],
+                [
+                    'content' => 'Groups',
+                    'controller' => 'group/index'
+                ],
+                [
+                    'content' => 'Disciples',
+                    'controller' => 'disciple/index'
+                ],
+                [
+                    'content' => 'Plans',
+                    'controller' => 'plan/index'
+                ],
+                [
+                    'content' => 'Lections',
+                    'controller' => 'lections/index'
+                ],
+                [
+                    'content' => 'Tasks',
+                    'controller' => 'tasks/index'
+                ],
+                [
+                    'content' => 'Results',
+                    'controller' => 'results/index'
+                ],
+                [
+                    'content' => 'Department',
+                    'controller' => 'department/index'
+                ], 
+                [
+                    'content' => 'Faculty',
+                    'controller' => 'faculty/index'
+                ],
+                [
+                    'content' => 'University',
+                    'controller' => 'university/index'
                 ]
             ];
         } else if($isStudent) {
@@ -130,16 +186,40 @@ AppAsset::register($this);
                     'controller' => 'studentcab/index'
                 ],
                 [
-                    'content' => 'Metodists',
-                    'controller' => 'metodist/index'
-                ],
-                [
                     'content' => 'Teachers',
                     'controller' => 'teacher/index'
                 ],
                 [
                     'content' => 'Students',
                     'controller' => 'student/index'
+                ],
+                [
+                    'content' => 'Plans',
+                    'controller' => 'plan/index'
+                ],
+                [
+                    'content' => 'Lections',
+                    'controller' => 'lections/index'
+                ],
+                [
+                    'content' => 'Tasks',
+                    'controller' => 'tasks/index'
+                ],
+                [
+                    'content' => 'Results',
+                    'controller' => 'results/index'
+                ],
+                [
+                    'content' => 'Specialities',
+                    'controller' => 'speciality/index'
+                ],
+                [
+                    'content' => 'Faculty',
+                    'controller' => 'faculty/index'
+                ],
+                [
+                    'content' => 'University',
+                    'controller' => 'university/index'
                 ]
             ];
         }
