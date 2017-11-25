@@ -15,20 +15,38 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Faculty', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <? if(\app\models\User::isAdmin()): ?>
+        <p>
+            <?= Html::a('Create Faculty', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
+    <? endif ?>
+    <?php
+        if(\app\models\User::isAdmin()) {
+            $columns = [
+                ['class' => 'yii\grid\SerialColumn'],
+
+                'f_id',
+                'f_name',
+                'u_id',
+
+                ['class' => 'yii\grid\ActionColumn'],
+            ];
+        } else {
+            $columns = [
+                ['class' => 'yii\grid\SerialColumn'],
+
+                'f_id',
+                'f_name',
+                'u_id',
+
+            ];
+        }
+
+
+    ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'f_id',
-            'f_name',
-            'u_id',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
+        'columns' => $columns
     ]); ?>
 </div>

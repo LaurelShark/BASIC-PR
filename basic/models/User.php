@@ -22,4 +22,7 @@ class User extends \yii\db\ActiveRecord
             (substr($haystack, -$length) === $needle);
     }
 
+    static function isAdmin() {
+        return is_a($_SESSION['user'], Admin::className());
+    }
 }
