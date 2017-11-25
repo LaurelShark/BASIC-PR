@@ -17,7 +17,13 @@ class AdmincabController extends Controller
 
     public function actionIndex()
     {
+        $user = $_SESSION['user'];
+        if(!$user || !is_a($user, Admin::className())) {
+            return $this->redirect(['login/index']);
+        }
+
         return $this->render('index', [
+            'user' => $user
         ]);
     }
 }

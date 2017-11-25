@@ -17,7 +17,7 @@ use Yii;
  *
  * @property Department $d
  */
-class Metodist extends \yii\db\ActiveRecord
+class Metodist extends User
 {
     /**
      * @inheritdoc

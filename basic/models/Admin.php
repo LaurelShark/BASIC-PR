@@ -16,7 +16,7 @@ use Yii;
  * @property string $a_email
  * @property string $a_password
  */
-class Admin extends \yii\db\ActiveRecord
+class Admin extends User
 {
     /**
      * @inheritdoc

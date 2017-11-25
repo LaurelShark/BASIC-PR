@@ -19,7 +19,7 @@ use Yii;
  * @property Disciple[] $disciples
  * @property Department $d
  */
-class Teacher extends \yii\db\ActiveRecord
+class Teacher extends User
 {
     /**
      * @inheritdoc

@@ -35,16 +35,16 @@ class LoginController extends Controller
             $_SESSION['user'] = $user;
 
             if(is_a($user, Admin::className())) {
-                return $this->redirect(['adminCab/index']);
+                return $this->redirect(['admincab/index']);
             }
             if(is_a($user, Metodist::className())) {
-                return $this->redirect(['metodistCab/index']);
+                return $this->redirect(['metodistcab/index']);
             }
             if(is_a($user, Student::className())) {
-                return $this->redirect(['studentCab/index']);
+                return $this->redirect(['studentcab/index']);
             }
             if(is_a($user, Teacher::className())) {
-                return $this->redirect(['teacherCab/index']);
+                return $this->redirect(['teachercab/index']);
             }
         }
 
