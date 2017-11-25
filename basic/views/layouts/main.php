@@ -178,7 +178,7 @@ AppAsset::register($this);
                 ]
             ];
         } else if($isStudent) {
-            $cssFile = "s_style.css";
+            $cssFile = "style.css";
 
             $links = [
                 [
