@@ -63,7 +63,7 @@ class TasksSearch extends Tasks
         ]);
 
         $user = $_SESSION['user'];
-        if($user) {
+        if($user && is_a($user, Student::className())) {
             $query->
             innerJoin('Plan', 'Tasks.task_id = Plan.task_id')->
             leftJoin('Results', 'Plan.p_id = Results.p_id')->

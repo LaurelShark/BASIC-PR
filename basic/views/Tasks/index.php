@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <? if(\app\models\User::isAdmin()): ?>
+    <? if(!\app\models\User::isStudent()): ?>
         <p>
             <?= Html::a('Create Tasks', ['create'], ['class' => 'btn btn-success']) ?>
         </p>
@@ -42,9 +42,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     innerJoin('Student', 'Group_Student.s_id = Student.s_id')->
                     where(['Student.s_id' => $_SESSION['user']['s_id'] ])->
                     select('Tasks.*, Results.NumberOfTries, Results.Mark')->
-                    asArray();
+                    asArray()->all();
 
-            $results = \yii\helpers\ArrayHelper::index($results, 'Tasks.task_id');
+            #print_r($results); die;
+
+            $results = \yii\helpers\ArrayHelper::index($results, 'task_id');
 
 
             $columns = [
@@ -56,8 +58,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 ['header' => 'Number Of Tries',
                  'content' => function($model) use($results) {
                     $id = $model['task_id'];
-                    if(isset($results[$id]['Results.NumberOfTries'])) {
-                        return $results[$id]['Results.NumberOfTries'];
+                    if(isset($results[$id]['NumberOfTries'])) {
+                        return $results[$id]['NumberOfTries'];
                     } else {
                         return 0;
                     }
@@ -66,8 +68,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 ['header' => 'Mark',
                 'content' => function($model) use($results) {
                     $id = $model['task_id'];
-                    if(isset($results[$id]['Results.Mark'])) {
-                        return $results[$id]['Results.Mark'];
+                    if(isset($results[$id]['Mark'])) {
+                        return $results[$id]['Mark'];
                     } else {
                         return '-';
                     }
@@ -75,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 ['content' => function($model) {
                     $id = $model['task_id'];
-                    $url = \yii\helpers\Url::to(['questioneer/index', 'qid' => $id]);
+                    $url = \yii\helpers\Url::to(['questioneer/index', 'task_id' => $id]);
                     return Html::a('test', $url);
                 }],
             ];
