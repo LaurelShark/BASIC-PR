@@ -9,8 +9,8 @@ use Yii;
  *
  * @property integer $id
  * @property string $text
+ * @property string $task_intro
  * @property string $answers
- * @property integer $correct_answer_index
  * @property integer $task_id
  *
  * @property Tasks $task
@@ -31,9 +31,10 @@ class Question extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['correct_answer_index', 'task_id'], 'required'],
-            [['correct_answer_index', 'task_id'], 'integer'],
+            [['task_id'], 'required'],
+            [['task_id'], 'integer'],
             [['text'], 'string', 'max' => 50],
+            [['task_intro'], 'string', 'max' => 500],
             [['answers'], 'string', 'max' => 200],
             [['task_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tasks::className(), 'targetAttribute' => ['task_id' => 'task_id']],
         ];
@@ -47,8 +48,8 @@ class Question extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'text' => 'Text',
+            'task_intro' => 'Task Intro',
             'answers' => 'Answers',
-            'correct_answer_index' => 'Correct Answer Index',
             'task_id' => 'Task ID',
         ];
     }

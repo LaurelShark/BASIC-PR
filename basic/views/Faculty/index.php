@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <? if(\app\models\User::isAdmin()): ?>
+    <?php if(\app\models\User::isAdmin()): ?>
         <p>
             <?= Html::a('Create Faculty', ['create'], ['class' => 'btn btn-success']) ?>
         </p>
-    <? endif ?>
+    <?php endif ?>
     <?php
         if(!\app\models\User::isStudent()) {
             $columns = [

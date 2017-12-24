@@ -50,13 +50,13 @@
         </div>
     </section> 
 
-<? if(isset($failure) && $failure): ?>
+<?php if(isset($failure) && $failure): ?>
     <script>
         $(function() {
             alert("Wrong username of password!")
         })
     </script>
-<? endif; ?>
+<?php endif; ?>
 
 
 

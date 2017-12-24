@@ -28,13 +28,20 @@ AppAsset::register($this);
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
 </head>
 <body>
 <?php $this->beginBody() ?>
 
-<? $user = $_SESSION['user'] ?>
+<?php
+if (!session_status() == PHP_SESSION_ACTIVE) {
+    session_start();
+}
+$user = isset($_SESSION['user']) ? $_SESSION['user'] : false;
+?>
 
-<? if($user): ?>
+<?php if($user): ?>
     <?php
         $isAdmin = is_a($user, \app\models\Admin::className());
         $isMetodist = is_a($user, \app\models\Metodist::className());
@@ -194,6 +201,14 @@ AppAsset::register($this);
                     'controller' => 'student/index'
                 ],
                 [
+                    'content' => 'Groups',
+                    'controller' => 'group/index'
+                ],
+                [
+                    'content' => 'Disciples',
+                    'controller' => 'disciple/index'
+                ],
+                [
                     'content' => 'Plans',
                     'controller' => 'plan/index'
                 ],
@@ -246,7 +261,7 @@ AppAsset::register($this);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Ukraine, Kyiv</a>
+                <a class="navbar-brand" href="http://mathpar.com"><img src="http://mathpar.com/img/logo.png" style="width: 60%; background: black; border-radius: 100px;"></a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
 
@@ -256,9 +271,9 @@ AppAsset::register($this);
                         <button id="crud-dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Panels
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                            <? foreach(array_slice($links, 1) as $link): ?>
+                            <?php foreach(array_slice($links, 1) as $link): ?>
                                 <?= renderItem($link) ?>
-                            <? endforeach ?>
+                            <?php endforeach ?>
                         </ul>
                     </div>
 
@@ -285,7 +300,7 @@ AppAsset::register($this);
         }
     </style>
 
-<? endif ?>
+<?php endif ?>
 
 
 <?= $content ?>

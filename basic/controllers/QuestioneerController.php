@@ -35,9 +35,19 @@ class QuestioneerController extends Controller
 
             $mark = 0;
             foreach($questions as $qi => $question) {
-                $correct_index = $question['correct_answer_index'];
-                $actual_index = $_REQUEST[$qi];
-                if($correct_index == $actual_index) {
+                $answers = json_decode($question['answers']);
+                $current_answers = $_REQUEST[$qi];
+
+                $correct = true;
+                foreach($answers as $a_pattern) {
+
+                    if(!preg_match($a_pattern, $current_answers)) {
+                        $correct = false;
+                        break;
+                    }
+                }
+
+                if($correct) {
                     $mark++;
                 }
             }

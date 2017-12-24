@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <? if(!\app\models\User::isStudent()): ?>
+    <?php if(!\app\models\User::isStudent()): ?>
         <p>
             <?= Html::a('Create Tasks', ['create'], ['class' => 'btn btn-success']) ?>
         </p>
-    <? endif ?>
+    <?php endif ?>
 
     <?
         if(!\app\models\User::isStudent()) {
