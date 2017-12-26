@@ -38,11 +38,13 @@ AppAsset::register($this);
 if (!session_status() == PHP_SESSION_ACTIVE) {
     session_start();
 }
-$user = isset($_SESSION['user']) ? $_SESSION['user'] : false;
+$user = isset($_SESSION['user']) ? unserialize(serialize($_SESSION['user'])) : false;
 ?>
 
 <?php if($user): ?>
     <?php
+	//print_r($user);
+	//die;
         $isAdmin = is_a($user, \app\models\Admin::className());
         $isMetodist = is_a($user, \app\models\Metodist::className());
         $isTeacher = is_a($user, \app\models\Teacher::className());
