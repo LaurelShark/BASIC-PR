@@ -38,7 +38,8 @@ AppAsset::register($this);
 if (!session_status() == PHP_SESSION_ACTIVE) {
     session_start();
 }
-$user = isset($_SESSION['user']) ? unserialize(serialize($_SESSION['user'])) : false;
+//$_SESSION['user'] = unserialize(serialize($_SESSION['user']));
+$user = isset($_SESSION['user']) ? $_SESSION['user'] : false;
 ?>
 
 <?php if($user): ?>
