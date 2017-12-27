@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     innerJoin('Group_Student', 'Groups.g_id = Group_Student.g_id')->
                     innerJoin('Student', 'Group_Student.s_id = Student.s_id')->
                     where(['Student.s_id' => $_SESSION['user']['s_id'] ])->
-                    select('Tasks.*, Results.NumberOfTries, Results.Mark')->
+                    select('Tasks.*, Results.NumberOfTries, Results.Mark, Results.Bitmask')->
                     asArray()->all();
 
             #print_r($results); die;
@@ -68,18 +68,24 @@ $this->params['breadcrumbs'][] = $this->title;
                 ['header' => 'Mark',
                 'content' => function($model) use($results) {
                     $id = $model['task_id'];
-                    if(isset($results[$id]['Mark'])) {
-                        return $results[$id]['Mark'];
+                    if(isset($results[$id]['Bitmask'])) {
+                        return $results[$id]['Bitmask'];
                     } else {
                         return '-';
                     }
+                }],
+
+                ['header' => 'Bitmask',
+                 'content' => function($model) {
+                     $id = $model['task_id'];
+
                 }],
 
                 ['content' => function($model) {
                     $id = $model['task_id'];
                     $url = \yii\helpers\Url::to(['questioneer/index', 'task_id' => $id]);
                     return Html::a('test', $url);
-                }],
+                }]
             ];
         }
 

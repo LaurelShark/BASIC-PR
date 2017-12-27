@@ -31,6 +31,8 @@ class QuestioneerController extends Controller
         $task = Tasks::findOne($task_id);
         $questions = Question::findAll(['task_id' => $task_id]);
 
+        $bitmask = '';
+
         if(\Yii::$app->request->isPost) {
 
             $mark = 0;
@@ -49,6 +51,9 @@ class QuestioneerController extends Controller
 
                 if($correct) {
                     $mark++;
+                    $bitmask .= '1';
+                } else {
+                    $bitmask .= '0';
                 }
             }
 
@@ -75,6 +80,7 @@ class QuestioneerController extends Controller
 
             $result->Mark = $mark;
             $result->NumberOfTries++;
+            $result->Bitmask = $bitmask;
 
             $result->save();
 

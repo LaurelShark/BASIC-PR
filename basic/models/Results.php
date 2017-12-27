@@ -12,6 +12,7 @@ use Yii;
  * @property integer $s_id
  * @property integer $NumberOfTries
  * @property integer $Mark
+ * @property string $Bitmask
  *
  * @property Plan $p
  * @property Student $s
@@ -36,6 +37,7 @@ class Results extends \yii\db\ActiveRecord
             [['p_id', 's_id', 'NumberOfTries', 'Mark'], 'integer'],
             [['p_id'], 'exist', 'skipOnError' => true, 'targetClass' => Plan::className(), 'targetAttribute' => ['p_id' => 'p_id']],
             [['s_id'], 'exist', 'skipOnError' => true, 'targetClass' => Student::className(), 'targetAttribute' => ['s_id' => 's_id']],
+            ['Bitmask', 'string']
         ];
     }
 
@@ -50,6 +52,7 @@ class Results extends \yii\db\ActiveRecord
             's_id' => 'S ID',
             'NumberOfTries' => 'Number Of Tries',
             'Mark' => 'Mark',
+            'Bitmask' => 'Bitmasks'
         ];
     }
 
