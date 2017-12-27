@@ -23,22 +23,22 @@ class User extends \yii\db\ActiveRecord
     }
 
     static function isAdmin() {
-//	$_SESSION['user'] = unserialize(serialize($_SESSION['user']));
+	$_SESSION['user'] = unserialize(serialize($_SESSION['user']));
         return is_a($_SESSION['user'], Admin::className());
     }
 
     static function isMetodist() {
-//	$_SESSION['user'] = unserialize(serialize($_SESSION['user']));
+	$_SESSION['user'] = unserialize(serialize($_SESSION['user']));
         return is_a($_SESSION['user'], Metodist::className());
     }
 
     static function isTeacher() {
-	//$_SESSION['user'] = unserialize(serialize($_SESSION['user']));
+	$_SESSION['user'] = unserialize(serialize($_SESSION['user']));
         return is_a($_SESSION['user'], Teacher::className());
     }
 
     static function isStudent() {
-	//$_SESSION['user'] = unserialize(serialize($_SESSION['user']));
+	$_SESSION['user'] = unserialize(serialize($_SESSION['user']));
         return is_a($_SESSION['user'], Student::className());
     }
 }
